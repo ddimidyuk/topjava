@@ -35,8 +35,43 @@ $(function () {
     makeEditable();
 });
 
+$(function () {
+
+    $("#dateTime").datetimepicker();
+
+    $("#startDate").datetimepicker({
+        timepicker: false,
+        format: 'Y-m-d'
+    });
+
+    $("#endDate").datetimepicker({
+        timepicker: false,
+        format: 'Y-m-d'
+    });
+
+    $("#startTime").datetimepicker({
+        datepicker: false,
+        step: 15,
+        format: 'H:i'
+    });
+
+    $("#endTime").datetimepicker({
+        datepicker: false,
+        step: 15,
+        format: 'H:i'
+    });
+});
+
 function updateTableWithFilter() {
     $.get(ajaxUrl, {startDate: $("#startDate").val(), endDate: $("#endDate").val(), startTime: $("#startTime").val(), endTime: $("#endTime").val()}, function (data) {
         datatableApi.clear().rows.add(data).draw();
     });
+}
+
+function clearFilter() {
+    $("#startDate").val('');
+    $("#endDate").val('');
+    $("#startTime").val('');
+    $("#endTime").val('');
+    updateTableWithFilter();
 }

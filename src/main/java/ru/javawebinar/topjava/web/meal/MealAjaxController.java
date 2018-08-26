@@ -15,12 +15,6 @@ import java.util.List;
 @RequestMapping("/ajax/meal")
 public class MealAjaxController extends AbstractMealController {
 
-//    @Override
-//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public List<MealWithExceed> getAll() {
-//        return super.getAll();
-//    }
-
     @Override
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<MealWithExceed> getBetween(@RequestParam(value = "startDate", required = false) LocalDate startDate,

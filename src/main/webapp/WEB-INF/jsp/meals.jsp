@@ -8,86 +8,13 @@
 <body>
 <script type="text/javascript" src="resources/js/datatablesUtil.js" defer></script>
 <script type="text/javascript" src="resources/js/mealDatatables.js" defer></script>
-<script type="text/javascript" src="resources/js/dtp.js" defer></script>
 <jsp:include page="fragments/bodyHeader.jsp"/>
-
-<%--<section>--%>
-<%--<h3><spring:message code="meal.title"/></h3>--%>
-
-<%--<form method="post" action="meals/filter">--%>
-<%--<dl>--%>
-<%--<dt><spring:message code="meal.startDate"/>:</dt>--%>
-<%--<dd><input type="date" name="startDate" value="${param.startDate}"></dd>--%>
-<%--</dl>--%>
-<%--<dl>--%>
-<%--<dt><spring:message code="meal.endDate"/>:</dt>--%>
-<%--<dd><input type="date" name="endDate" value="${param.endDate}"></dd>--%>
-<%--</dl>--%>
-<%--<dl>--%>
-<%--<dt><spring:message code="meal.startTime"/>:</dt>--%>
-<%--<dd><input type="time" name="startTime" value="${param.startTime}"></dd>--%>
-<%--</dl>--%>
-<%--<dl>--%>
-<%--<dt><spring:message code="meal.endTime"/>:</dt>--%>
-<%--<dd><input type="time" name="endTime" value="${param.endTime}"></dd>--%>
-<%--</dl>--%>
-<%--<button type="submit"><spring:message code="meal.filter"/></button>--%>
-<%--</form>--%>
-<%--<hr>--%>
-<%--<a href="meals/create"><spring:message code="meal.add"/></a>--%>
-<%--<hr>--%>
-<%--<table border="1" cellpadding="8" cellspacing="0">--%>
-<%--<thead>--%>
-<%--<tr>--%>
-<%--<th><spring:message code="meal.dateTime"/></th>--%>
-<%--<th><spring:message code="meal.description"/></th>--%>
-<%--<th><spring:message code="meal.calories"/></th>--%>
-<%--<th></th>--%>
-<%--<th></th>--%>
-<%--</tr>--%>
-<%--</thead>--%>
-<%--<c:forEach items="${meals}" var="meal">--%>
-<%--<jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.to.MealWithExceed"/>--%>
-<%--<tr data-mealExceed="${meal.exceed}">--%>
-<%--<td>--%>
-<%--&lt;%&ndash;${meal.dateTime.toLocalDate()} ${meal.dateTime.toLocalTime()}&ndash;%&gt;--%>
-<%--&lt;%&ndash;<%=TimeUtil.toString(meal.getDateTime())%>&ndash;%&gt;--%>
-<%--&lt;%&ndash;${fn:replace(meal.dateTime, 'T', ' ')}&ndash;%&gt;--%>
-<%--${fn:formatDateTime(meal.dateTime)}--%>
-<%--</td>--%>
-<%--<td>${meal.description}</td>--%>
-<%--<td>${meal.calories}</td>--%>
-<%--<td><a href="meals/update?id=${meal.id}"><spring:message code="common.update"/></a></td>--%>
-<%--<td><a href="meals/delete?id=${meal.id}"><spring:message code="common.delete"/></a></td>--%>
-<%--</tr>--%>
-<%--</c:forEach>--%>
-<%--</table>--%>
-<%--</section>--%>
-
 
 <div class="jumbotron pt-4">
     <div class="container">
         <h3><spring:message code="meal.title"/></h3>
         <br/>
-        <%--<form method="post" action="meals/filter">--%>
-        <%--<dl>--%>
-        <%--<dt><spring:message code="meal.startDate"/>:</dt>--%>
-        <%--<dd><input type="date" name="startDate" value="${param.startDate}"></dd>--%>
-        <%--</dl>--%>
-        <%--<dl>--%>
-        <%--<dt><spring:message code="meal.endDate"/>:</dt>--%>
-        <%--<dd><input type="date" name="endDate" value="${param.endDate}"></dd>--%>
-        <%--</dl>--%>
-        <%--<dl>--%>
-        <%--<dt><spring:message code="meal.startTime"/>:</dt>--%>
-        <%--<dd><input type="time" name="startTime" value="${param.startTime}"></dd>--%>
-        <%--</dl>--%>
-        <%--<dl>--%>
-        <%--<dt><spring:message code="meal.endTime"/>:</dt>--%>
-        <%--<dd><input type="time" name="endTime" value="${param.endTime}"></dd>--%>
-        <%--</dl>--%>
-        <%--<button type="submit"><spring:message code="meal.filter"/></button>--%>
-        <%--</form>--%>
+
         <div class="row">
             <div class="col-7">
                 <div class="card">
@@ -97,19 +24,19 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="startDate">From date</label>
+                                        <label class="col-form-label" for="startDate"><spring:message code="meal.startDate"/></label>
                                         <input class="form-control col-5" type="text" name="startDate" id="startDate">
 
-                                        <label class="col-form-label" for="endDate">To date</label>
+                                        <label class="col-form-label" for="endDate"><spring:message code="meal.endDate"/></label>
                                         <input class="form-control col-5" name="endDate" id="endDate">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="col-form-label" for="startTime">From time</label>
+                                        <label class="col-form-label" for="startTime"><spring:message code="meal.startTime"/></label>
                                         <input class="form-control col-3" name="startTime" id="startTime">
 
-                                        <label class="col-form-label" for="endTime">To time</label>
+                                        <label class="col-form-label" for="endTime"><spring:message code="meal.endTime"/></label>
                                         <input class="form-control col-3" name="endTime" id="endTime">
                                     </div>
                                 </div>
@@ -175,8 +102,6 @@
                                placeholder="<spring:message code="meal.dateTime"/>">
                     </div>
 
-                    <%--<script type="text/javascript" src="resources/js/dtp.js" defer></script>--%>
-
                     <div class="form-group">
                         <label for="description" class="col-form-label"><spring:message
                                 code="meal.description"/></label>
@@ -192,7 +117,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="clearFilter()">
                     <span class="fa fa-close"></span>
                     <spring:message code="common.cancel"/>
                 </button>
