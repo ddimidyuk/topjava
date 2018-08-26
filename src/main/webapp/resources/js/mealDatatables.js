@@ -1,4 +1,4 @@
-var ajaxUrl = "ajax/admin/users/";
+var ajaxUrl = "ajax/meal/";
 var datatableApi;
 
 // $(document).ready(function () {
@@ -8,19 +8,13 @@ $(function () {
         "info": true,
         "columns": [
             {
-                "data": "name"
+                "data": "dateTime"
             },
             {
-                "data": "email"
+                "data": "description"
             },
             {
-                "data": "roles"
-            },
-            {
-                "data": "enabled"
-            },
-            {
-                "data": "registered"
+                "data": "calories"
             },
             {
                 "defaultContent": "Edit",
@@ -41,14 +35,8 @@ $(function () {
     makeEditable();
 });
 
-function changeUserStatus(id) {
-    var isActive = $("#" + id).find('input:checkbox:first').attr('checked') !== 'checked';
-    $.ajax({
-        type: "POST",
-        url: ajaxUrl + id + "/status?isActive=" + isActive,
-        success: function () {
-            updateTable();
-            successNoty("Status changed");
-        }
+function updateTableWithFilter() {
+    $.get(ajaxUrl, {startDate: $("#startDate").val(), endDate: $("#endDate").val(), startTime: $("#startTime").val(), endTime: $("#endTime").val()}, function (data) {
+        datatableApi.clear().rows.add(data).draw();
     });
-};
+}
